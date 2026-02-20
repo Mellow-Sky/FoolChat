@@ -1,0 +1,95 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Style Console</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <button id="sidebar-toggle" class="sidebar-toggle" type="button" aria-expanded="true" aria-label="切换侧栏" title="切换侧栏"></button>
+        <nav class="browse-nav" aria-label="浏览栏">
+          <button id="browse-new-chat" class="browse-item active" type="button">新对话</button>
+          <button id="browse-recent" class="browse-item" type="button">最近对话</button>
+          <button id="browse-locate" class="browse-item" type="button">对话定位</button>
+          <button id="browse-model-style" class="browse-item" type="button">模型风格</button>
+        </nav>
+        <section id="browse-panel" class="browse-panel" aria-live="polite"></section>
+      </aside>
+
+      <main class="chat-root">
+        <header class="chat-header">
+          <div>
+            <h1 id="main-title">Gemini</h1>
+            <p id="status-text" class="status-text">Ready</p>
+          </div>
+          <div class="header-actions">
+            <button id="theme-toggle" class="ghost-btn theme-toggle" type="button" title="切换主题" aria-label="切换主题">🍎</button>
+          </div>
+        </header>
+
+        <section id="style-settings" class="style-settings hidden">
+          <h2>自定义模型风格</h2>
+          <p class="style-help">
+            在下面填写模型名称和风格提示词。保存后会出现在“模型风格”列表中，可随时选择或删除。
+          </p>
+          <input
+            id="custom-style-name"
+            class="style-input style-input-name"
+            maxlength="24"
+            placeholder="模型名称，例如：严谨架构师"
+          />
+          <ul class="style-guide-list">
+            <li>先写“角色与语气”：例如“你是冷静、专业的技术顾问”</li>
+            <li>再写“输出结构”：例如“先给结论，再给步骤，最后给注意事项”</li>
+            <li>再写“约束条件”：例如“默认中文，不要废话，必要时给代码示例”</li>
+          </ul>
+          <textarea
+            id="custom-style-input"
+            class="style-input"
+            rows="10"
+            placeholder="示例：你是资深前端工程师。请用中文回答，先给结论，再给可执行步骤；代码要简洁并附关键注释；当信息不足时先给通用可执行方案。"
+          ></textarea>
+          <div class="style-actions">
+            <button id="save-style-btn" class="send-btn" type="button">保存为模型</button>
+            <button id="exit-style-btn" class="ghost-btn" type="button">返回聊天</button>
+          </div>
+          <p id="style-tip" class="style-tip">保存后会自动选中该模型风格。</p>
+        </section>
+
+        <section id="messages" class="messages" aria-live="polite"></section>
+
+        <section id="welcome" class="welcome">
+          <h2>今天想聊点什么？</h2>
+          <p>你可以直接输入问题，或点击下面的建议提示词。</p>
+        </section>
+
+        <section id="starters" class="starters">
+          <button class="starter-chip" type="button" data-prompt="帮我写一段简洁的自我介绍">帮我写一段简洁的自我介绍</button>
+          <button class="starter-chip" type="button" data-prompt="给我一个今天可执行的学习计划">给我一个今天可执行的学习计划</button>
+          <button class="starter-chip" type="button" data-prompt="解释一下 TypeScript 的泛型">解释一下 TypeScript 的泛型</button>
+          <button class="starter-chip" type="button" data-prompt="帮我润色一段中文文案">帮我润色一段中文文案</button>
+        </section>
+
+        <form id="chat-form" class="composer">
+          <textarea id="chat-input" rows="1" maxlength="3000" placeholder="输入消息，Enter 发送，Shift+Enter 换行"></textarea>
+          <button id="send-btn" class="send-btn" type="submit">发送</button>
+        </form>
+      </main>
+    </div>
+
+    <template id="msg-template">
+      <article class="message">
+        <div class="message-meta">
+          <span class="message-role"></span>
+          <span class="message-time"></span>
+        </div>
+        <p class="content"></p>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
