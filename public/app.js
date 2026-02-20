@@ -103,7 +103,7 @@ function setRightView(mode) {
   starters.classList.toggle("hidden", isStyle);
   form.classList.toggle("hidden", isStyle);
 
-  mainTitle.textContent = isStyle ? "模型风格" : "Gemini";
+  mainTitle.textContent = isStyle ? "模型风格" : "FoolChat";
 }
 
 function autoResize() {
@@ -204,7 +204,7 @@ function setStarterVisible(show) {
 
 function roleLabel(kind) {
   if (kind === "user") return "YOU";
-  if (kind === "bot") return "GEMINI";
+  if (kind === "bot") return "FOOLCHAT";
   if (kind === "error") return "ERROR";
   return "SYSTEM";
 }
@@ -322,6 +322,15 @@ function renderMarkdown(md) {
   return html;
 }
 
+function highlightCodeBlocks(scopeNode) {
+  if (!window.hljs) return;
+  const root = scopeNode || document;
+  const codeBlocks = root.querySelectorAll(".content pre code");
+  codeBlocks.forEach((codeEl) => {
+    window.hljs.highlightElement(codeEl);
+  });
+}
+
 function appendMessageNode(msg, idx) {
   const node = template.content.firstElementChild.cloneNode(true);
   const roleEl = node.querySelector(".message-role");
@@ -337,6 +346,7 @@ function appendMessageNode(msg, idx) {
     contentEl.textContent = msg.content;
   } else {
     contentEl.innerHTML = renderMarkdown(msg.content);
+    highlightCodeBlocks(node);
   }
 
   messages.appendChild(node);
@@ -364,6 +374,7 @@ function updateMessageNode(idx) {
     contentEl.textContent = msg.content;
   } else {
     contentEl.innerHTML = renderMarkdown(msg.content);
+    highlightCodeBlocks(node);
   }
   messages.scrollTop = messages.scrollHeight;
 }
@@ -469,6 +480,9 @@ function pushMessage(content, kind) {
 
   if (convo.messages.length === 1 && kind === "user") {
     convo.title = safeTitle(content);
+    browseMode = "locate";
+    if (browseLocate) setBrowseActive(browseLocate);
+    setRightView("chat");
   }
 
   persistConversations();
@@ -488,7 +502,7 @@ function showTyping() {
   removeTypingNode();
   const node = template.content.firstElementChild.cloneNode(true);
   node.classList.add("typing");
-  node.querySelector(".message-role").textContent = "GEMINI";
+  node.querySelector(".message-role").textContent = "FOOLCHAT";
   node.querySelector(".message-time").textContent = nowTime();
   node.querySelector(".content").innerHTML = '<span class="typing-dots"><span></span><span></span><span></span></span>';
   typingNode = node;
@@ -518,6 +532,9 @@ function renderBrowsePanel() {
     `;
     wrap.querySelector(".browse-action").addEventListener("click", () => {
       switchToOrCreateBlankConversation();
+      browseMode = "recent";
+      if (browseRecent) setBrowseActive(browseRecent);
+      setRightView("chat");
       renderMessages();
       renderBrowsePanel();
       setStatusReady();

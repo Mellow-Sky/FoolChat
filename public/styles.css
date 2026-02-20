@@ -1,21 +1,21 @@
-﻿:root {
-  --bg-0: #f5f5f7;
-  --bg-1: #eceef2;
-  --panel: rgba(255, 255, 255, 0.72);
-  --panel-strong: rgba(255, 255, 255, 0.88);
-  --text: #1d1d1f;
-  --subtle: #6e6e73;
-  --line: rgba(60, 60, 67, 0.16);
-  --line-soft: rgba(60, 60, 67, 0.08);
-  --assistant: rgba(255, 255, 255, 0.85);
-  --user: rgba(230, 242, 255, 0.95);
+:root {
+  --bg-0: #f2f8ff;
+  --bg-1: #e6f1ff;
+  --panel: rgba(241, 248, 255, 0.8);
+  --panel-strong: rgba(246, 251, 255, 0.9);
+  --text: #19314f;
+  --subtle: #6181a3;
+  --line: rgba(105, 145, 188, 0.28);
+  --line-soft: rgba(105, 145, 188, 0.16);
+  --assistant: rgba(245, 251, 255, 0.92);
+  --user: rgba(225, 241, 255, 0.95);
   --error: rgba(255, 59, 48, 0.1);
-  --typing: rgba(199, 210, 224, 0.35);
-  --chip: rgba(255, 255, 255, 0.78);
-  --blue: #0071e3;
-  --blue-press: #0062c4;
-  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.06);
-  --shadow-strong: 0 14px 36px rgba(0, 0, 0, 0.1);
+  --typing: rgba(191, 217, 242, 0.42);
+  --chip: rgba(241, 249, 255, 0.92);
+  --blue: #2c7fdd;
+  --blue-press: #236cc0;
+  --shadow-soft: 0 8px 30px rgba(32, 95, 160, 0.08);
+  --shadow-strong: 0 14px 36px rgba(32, 95, 160, 0.12);
 }
 
 * {
@@ -34,6 +34,7 @@ body {
   color: var(--text);
   background:
     radial-gradient(1200px 700px at 15% -20%, #ffffff 0%, transparent 60%),
+    radial-gradient(980px 620px at 92% 108%, rgba(199, 227, 255, 0.62), transparent 62%),
     linear-gradient(180deg, var(--bg-0), var(--bg-1));
 }
 
@@ -135,6 +136,75 @@ body.theme-cute .sidebar-toggle::before {
 
 body.theme-cute .sidebar-toggle.is-collapsed::before {
   background: rgba(196, 63, 127, 0.48);
+}
+
+body:not(.theme-cute) .sidebar {
+  border-right: 1px solid rgba(126, 168, 211, 0.26);
+  background: linear-gradient(180deg, rgba(241, 248, 255, 0.9), rgba(232, 243, 255, 0.82));
+}
+
+body:not(.theme-cute) .browse-nav {
+  border-color: rgba(125, 169, 214, 0.3);
+  background: rgba(230, 243, 255, 0.76);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 2px 8px rgba(74, 131, 194, 0.12);
+}
+
+body:not(.theme-cute) .browse-item {
+  color: #345d86;
+}
+
+body:not(.theme-cute) .browse-item:hover {
+  background: rgba(255, 255, 255, 0.72);
+}
+
+body:not(.theme-cute) .browse-item.active {
+  border-color: rgba(102, 151, 201, 0.36);
+  background: rgba(255, 255, 255, 0.95);
+  color: #214d7a;
+  box-shadow:
+    0 1px 4px rgba(75, 133, 198, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+body:not(.theme-cute) .browse-panel {
+  border-color: rgba(118, 161, 205, 0.24);
+  background: rgba(241, 249, 255, 0.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.88),
+    0 8px 20px rgba(74, 131, 194, 0.11);
+}
+
+body:not(.theme-cute) .browse-row {
+  border-color: rgba(111, 153, 197, 0.2);
+  background: rgba(247, 252, 255, 0.9);
+}
+
+body:not(.theme-cute) .browse-row:hover {
+  border-color: rgba(92, 142, 193, 0.34);
+  background: rgba(255, 255, 255, 0.97);
+}
+
+body:not(.theme-cute) .browse-row.active {
+  border-color: rgba(65, 129, 194, 0.46);
+  background: linear-gradient(180deg, rgba(232, 245, 255, 0.95), rgba(248, 252, 255, 0.98));
+  box-shadow:
+    0 0 0 1px rgba(65, 129, 194, 0.18),
+    0 2px 8px rgba(65, 129, 194, 0.16);
+}
+
+body:not(.theme-cute) .sidebar-toggle {
+  border-color: rgba(99, 145, 192, 0.28);
+  background: rgba(248, 253, 255, 0.94);
+}
+
+body:not(.theme-cute) .sidebar-toggle::before {
+  border-color: rgba(61, 113, 166, 0.52);
+}
+
+body:not(.theme-cute) .sidebar-toggle.is-collapsed::before {
+  background: rgba(61, 113, 166, 0.42);
 }
 
 .app-shell {
@@ -306,9 +376,9 @@ body.theme-cute .sidebar-toggle.is-collapsed::before {
 }
 
 .browse-action {
-  border: 1px solid rgba(60, 60, 67, 0.16);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 246, 248, 0.92));
-  color: var(--text);
+  border: 1px solid rgba(44, 127, 221, 0.34);
+  background: linear-gradient(180deg, rgba(232, 245, 255, 0.96), rgba(213, 233, 255, 0.94));
+  color: #1f4f82;
   border-radius: 10px;
   height: 36px;
   width: 100%;
@@ -316,6 +386,35 @@ body.theme-cute .sidebar-toggle.is-collapsed::before {
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.86),
+    0 3px 10px rgba(44, 127, 221, 0.16);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.browse-action:hover {
+  border-color: rgba(44, 127, 221, 0.44);
+  background: linear-gradient(180deg, rgba(241, 250, 255, 0.98), rgba(220, 239, 255, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.92),
+    0 4px 12px rgba(44, 127, 221, 0.2);
+}
+
+body.theme-cute .browse-action {
+  border-color: rgba(255, 120, 184, 0.42);
+  background: linear-gradient(180deg, rgba(255, 239, 249, 0.97), rgba(255, 219, 238, 0.94));
+  color: #7a315f;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 3px 10px rgba(255, 120, 184, 0.18);
+}
+
+body.theme-cute .browse-action:hover {
+  border-color: rgba(255, 120, 184, 0.5);
+  background: linear-gradient(180deg, rgba(255, 246, 252, 0.98), rgba(255, 229, 244, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.94),
+    0 4px 12px rgba(255, 120, 184, 0.22);
 }
 
 .browse-list {
@@ -419,8 +518,8 @@ body.theme-cute .sidebar-toggle.is-collapsed::before {
   grid-template-rows: auto minmax(0, 1fr) auto auto;
   height: 100vh;
   min-height: 0;
-  padding: 18px 28px;
-  gap: 12px;
+  padding: 2px 28px 8px;
+  gap: 2px;
   overflow: hidden;
 }
 
@@ -441,9 +540,9 @@ body.theme-cute .sidebar-toggle.is-collapsed::before {
 }
 
 .chat-header h1 {
-  margin: 6px 0 2px;
+  margin: 0;
   font-family: "SF Pro Display", "SF Pro Text", "PingFang SC", sans-serif;
-  font-size: clamp(34px, 4vw, 50px);
+  font-size: clamp(24px, 2.3vw, 30px);
   font-weight: 700;
   letter-spacing: -0.03em;
 }
@@ -451,7 +550,7 @@ body.theme-cute .sidebar-toggle.is-collapsed::before {
 .status-text {
   margin: 0;
   color: var(--subtle);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .ghost-btn {
@@ -562,7 +661,7 @@ body.theme-cute .sidebar-toggle.is-collapsed::before {
   flex-direction: column;
   align-self: center;
   width: fit-content;
-  max-width: min(620px, 72%);
+  max-width: min(760px, 82%);
   border: 1px solid var(--line-soft);
   border-radius: 14px;
   padding: 8px 10px;
@@ -619,6 +718,14 @@ body.theme-cute .sidebar-toggle.is-collapsed::before {
 .content {
   margin: 0;
   font-size: 13px;
+}
+
+.message.bot .content,
+.message.system .content,
+.message.typing .content {
+  font-family: "Google Sans Text", "Google Sans", "Noto Sans SC", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .message.user .content {
@@ -851,7 +958,7 @@ body.theme-cute .sidebar-toggle.is-collapsed::before {
   .chat-root {
     height: calc(100vh - 66px);
     min-height: 0;
-    padding: 12px;
+    padding: 2px 12px 4px;
   }
 
   .welcome {
@@ -859,7 +966,7 @@ body.theme-cute .sidebar-toggle.is-collapsed::before {
   }
 
   .message {
-    max-width: 88%;
+    max-width: 94%;
   }
 
   .message.user {
