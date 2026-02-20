@@ -1,5 +1,7 @@
 # FoolChat (TypeScript + Express)
 
+[中文](./README.md) | [English](./README.en.md) | [日本語](./README.ja.md)
+
 一个本地可运行的 Gemini 聊天项目，包含：
 
 - Web 聊天界面（对话列表、定位、模型风格切换）
